@@ -1,0 +1,13 @@
+fastapi
+uvicorn
+sqlalchemy
+pymysql
+python-multipart
+pillow
+torch
+torchvision
+ultralytics
+pymongo
+bcrypt
+python-dotenv
+reportlab

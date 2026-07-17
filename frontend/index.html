@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FoundACrack - Road Damage Detection</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Login/Signup Modal -->
+    <div id="authModal">
+        <div class="login-container">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--spacing-md);">
+                <div class="login-header" style="text-align: left; margin-bottom: 0;">
+                    <div class="logo">
+    <img src="roadcrack-01.png" alt="FoundACrack Logo" class="logo-img">
+    <span>FoundACrack</span>
+</div>
+    </div>
+                
+                <button id="closeModalBtn" class="btn btn-secondary btn-small" style="border: none; background: transparent; color: var(--text-secondary);">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="18" y1="6" x2="6" y2="18"></line>
+                        <line x1="6" y1="6" x2="18" y2="18"></line>
+                    </svg>
+                </button>
+            </div>
+            
+            <!-- Auth Tabs -->
+            <div class="auth-tabs">
+                <button type="button" id="loginTab" class="auth-tab active">Login</button>
+                <button type="button" id="signupTab" class="auth-tab">Create Account</button>
+            </div>
+            
+            <!-- Login Form -->
+            <form id="loginForm" class="login-form" style="display: block;">
+                <div class="form-group">
+                    <label for="loginInput">Username or Email</label>
+                    <input type="text" id="loginInput" name="login" class="form-control" required placeholder="Enter username or email">
+                </div>
+                <div class="form-group">
+                    <label for="loginPassword">Password</label>
+                    <input type="password" id="loginPassword" name="password" class="form-control" required placeholder="Enter password">
+                </div>
+                <p class="error-message" id="loginError" style="color: #ef4444; margin-bottom: 16px; text-align: center; display: none;"></p>
+                <button type="submit" class="btn btn-primary btn-block">Login</button>
+                <button type="button" id="continueAsGuestBtn" class="btn btn-secondary btn-block" style="margin-top: 12px;">Continue as Guest</button>
+            </form>
+            
+            <!-- Signup Form -->
+            <form id="signupForm" class="login-form" style="display: none;">
+                <div class="form-group">
+                    <label for="signupFullName">Full Name</label>
+                    <input type="text" id="signupFullName" name="full_name" class="form-control" required placeholder="Enter your full name">
+                </div>
+                <div class="form-group">
+                    <label for="signupEmail">Email</label>
+                    <input type="email" id="signupEmail" name="email" class="form-control" required placeholder="Enter your email">
+                </div>
+                <div class="form-group">
+                    <label for="signupUsername">Username</label>
+                    <input type="text" id="signupUsername" name="username" class="form-control" required placeholder="Enter username">
+                </div>
+                <div class="form-group">
+                    <label for="signupPassword">Password</label>
+                    <input type="password" id="signupPassword" name="password" class="form-control" required placeholder="Enter password">
+                </div>
+                <div class="form-group">
+                    <label for="signupConfirmPassword">Confirm Password</label>
+                    <input type="password" id="signupConfirmPassword" name="confirm_password" class="form-control" required placeholder="Confirm your password">
+                </div>
+                <p class="error-message" id="signupError" style="color: #ef4444; margin-bottom: 16px; text-align: center; display: none;"></p>
+                <button type="submit" class="btn btn-primary btn-block">Create Account</button>
+                <button type="button" id="continueAsGuestBtn2" class="btn btn-secondary btn-block" style="margin-top: 12px;">Continue as Guest</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Main App -->
+    <div id="mainApp" class="page">
+        <nav class="navbar">
+            <div class="container">
+                <div class="logo">
+                    <img src="roadcrack-01.png" alt="FoundACrack Logo" class="logo-img">
+                    <span>FoundACrack</span>
+                </div>
+                <div class="nav-links">
+                    <a href="#home" class="nav-link active">Home</a>
+                    <a href="#howItWorks" class="nav-link">How It Works</a>
+                    <a href="#about" class="nav-link">About</a>
+                    <a href="#contact" class="nav-link">Contact</a>
+                    <a href="#upload" class="nav-link" id="uploadNavLink">Upload</a>
+                    <a href="#admin" class="nav-link" id="adminNavLink">Admin</a>
+                    <button id="loginNavBtn" class="btn btn-secondary btn-small">Login</button>
+                    <button id="logoutBtn" class="btn btn-secondary btn-small" style="display: none;">Logout</button>
+                </div>
+            </div>
+        </nav>
+
+        <section id="home" class="hero">
+            <div class="container">
+                <div class="hero-content">
+                   <div class="logo">
+    <img src="roadcrack-01.png" alt="FoundACrack Logo" class="logo-img">
+    <span>FoundACrack</span>
+</div>
+                    <p class="lead">AI-Powered Road Damage Detection</p>
+                    <p class="lead" style="margin-bottom: 24px;">Simple, fast, and reliable way to report road damage and keep our infrastructure safe.</p>
+                    <div class="hero-buttons">
+                        <a href="#upload" class="btn btn-primary" id="heroUploadBtn">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                                <polyline points="17 8 12 3 7 8"></polyline>
+                                <line x1="12" y1="3" x2="12" y2="15"></line>
+                            </svg>
+                            Upload Road Image
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="section-divider"></div>
+
+        <section id="howItWorks" class="features">
+            <div class="container">
+                <h2 class="section-title">How It Works</h2>
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                                <polyline points="17 8 12 3 7 8"></polyline>
+                                <line x1="12" y1="3" x2="12" y2="15"></line>
+                            </svg>
+                        </div>
+                        <h3>Upload Image</h3>
+                        <p>Take a photo or use live camera to capture road damage.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="11" cy="11" r="8"></circle>
+                                <path d="m21 21-4.35-4.35"></path>
+                            </svg>
+                        </div>
+                        <h3>AI Detection</h3>
+                        <p>Our custom-trained AI model identifies and classifies the damage.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                                <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                            </svg>
+                        </div>
+                        <h3>Report Generated</h3>
+                        <p>A detailed report is automatically sent to the relevant authorities.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="section-divider"></div>
+
+        <section id="about" class="about-section">
+            <div class="container">
+                <h2 class="section-title">About FoundACrack</h2>
+                <div style="max-width: 800px; margin: 0 auto; text-align: center; color: var(--text-secondary); line-height: 1.8;">
+                    <p style="margin-bottom: 16px;">FoundACrack is an AI-powered platform dedicated to improving road safety and infrastructure maintenance.</p>
+                    <p style="margin-bottom: 16px;">Our mission is to make it easy for citizens to report road damage, and for authorities to receive and manage those reports efficiently.</p>
+                    <p>Using state-of-the-art computer vision technology, we automatically detect and classify road damage, streamlining the entire reporting process.</p>
+                </div>
+            </div>
+        </section>
+
+        <div class="section-divider"></div>
+
+        <section id="contact" class="contact-section">
+            <div class="container">
+                <h2 class="section-title">Contact Us</h2>
+                <div style="max-width: 600px; margin: 0 auto; text-align: center; color: var(--text-secondary);">
+                    <p style="margin-bottom: 16px;">Have questions or feedback? We'd love to hear from you!</p>
+                    <div class="feature-card" style="text-align: left;">
+                        <h3 style="margin-bottom: 16px;">Get in Touch</h3>
+                        <p><strong>Email:</strong> info@foundacrack.in</p>
+                        <p><strong>Phone:</strong> +91 9876543210</p>
+                        <p><strong>Address:</strong> Bengaluru, Karnataka, India</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="upload" class="upload-section">
+            <div class="container">
+                <h2 class="section-title">Upload Road Image</h2>
+                <form id="uploadForm" class="upload-form">
+                    <div class="form-group">
+                        <label for="location">Location <span class="optional">(Optional)</span></label>
+                        <input type="text" id="location" name="location" placeholder="Enter location or use GPS" class="form-control">
+                        <button type="button" id="useLocationBtn" class="btn btn-secondary btn-small" style="margin-top: 8px;">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M21 10c0 6-9 12-9 12S3 16 3 10a9 9 0 0 1 18 0Z"></path>
+                                <circle cx="12" cy="10" r="3"></circle>
+                            </svg>
+                            Use My Location
+                        </button>
+                    </div>
+                    <div class="form-group">
+                        <label for="roadType">Road Type</label>
+                        <select id="roadType" name="roadType" class="form-control">
+                            <option value="City Road">City Road</option>
+                            <option value="State Highway">State Highway</option>
+                            <option value="National Highway">National Highway</option>
+                            <option value="Rural Road">Rural Road</option>
+                        </select>
+                    </div>
+                    
+                    <div class="dropzone" id="dropzone">
+                        <div class="dropzone-content">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                                <polyline points="17 8 12 3 7 8"></polyline>
+                                <line x1="12" y1="3" x2="12" y2="15"></line>
+                            </svg>
+                            <p>Drag & drop your image here, or click to select</p>
+                            <input type="file" id="fileInput" accept="image/*" hidden>
+                        </div>
+                        <div class="preview" id="preview" style="display: none;">
+                            <img id="previewImage" alt="Preview">
+                            <button type="button" id="removeBtn" class="btn btn-secondary btn-small">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                                </svg>
+                                Remove
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-primary btn-block" id="submitBtn">
+                        <span class="btn-text">Analyze Image</span>
+                        <span class="btn-loader" style="display: none;">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="spin">
+                                <line x1="12" y1="2" x2="12" y2="6"></line>
+                                <line x1="12" y1="18" x2="12" y2="22"></line>
+                                <line x1="4.93" y1="4.93" x2="7.76" y2="7.76"></line>
+                                <line x1="16.24" y1="16.24" x2="19.07" y2="19.07"></line>
+                                <line x1="2" y1="12" x2="6" y2="12"></line>
+                                <line x1="18" y1="12" x2="22" y2="12"></line>
+                                <line x1="4.93" y1="19.07" x2="7.76" y2="16.24"></line>
+                                <line x1="16.24" y1="7.76" x2="19.07" y2="4.93"></line>
+                            </svg>
+                            Analyzing...
+                        </span>
+                    </button>
+                </form>
+                <div id="results" class="results" style="display: none;"></div>
+            </div>
+        </section>
+
+        <section id="admin" class="admin-section">
+            <div class="container">
+                <h2 class="section-title">Admin Dashboard</h2>
+                <div class="admin-header">
+                    <div class="filters">
+                        <label for="statusFilter">Filter by status:</label>
+                        <select id="statusFilter" class="form-control">
+                            <option value="">All Statuses</option>
+                            <option value="Pending">Pending</option>
+                            <option value="Submitted">Submitted</option>
+                            <option value="Under Review">Under Review</option>
+                            <option value="Repair Scheduled">Repair Scheduled</option>
+                            <option value="Completed">Completed</option>
+                        </select>
+                    </div>
+                </div>
+                <div id="reportsList" class="reports-list"></div>
+            </div>
+        </section>
+
+        <footer class="footer">
+            <div class="container">
+                <p>&copy; 2026 FoundACrack. All rights reserved.</p>
+            </div>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
