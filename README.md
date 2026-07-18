@@ -54,14 +54,17 @@ The main objective of this project is to simplify road inspection by providing a
 ```text
 Road-Damage-Detection/
 │
-├── dataset/
-├── models/
-├── static/
-├── templates/
+├── backend/
+├── best/
+├── frontend/
+├── model/
 ├── reports/
-├── app.py
-├── requirements.txt
-└── README.md
+├── uploads/
+├── .gitignore
+├── README.md
+├── best.pt.zip
+├── check_zip.py
+└── make_best_pt.py
 ```
 
 ---
