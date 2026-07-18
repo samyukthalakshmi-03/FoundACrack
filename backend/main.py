@@ -327,7 +327,9 @@ async def delete_report(report_id: int):
             if os.path.exists(ann_path):
                 os.remove(ann_path)
     except Exception as e:
-        print(f"Error deleting files: {e}")
+        import traceback
+        traceback.print_exc()
+        raise
     
     # Delete report from DB
     c.execute("DELETE FROM reports WHERE id = ?", (report_id,))
