@@ -128,7 +128,7 @@ The model was trained using:
 Developed as part of an internship project.
 
 Team Members:
-- Samyuktha Lakshmi
+- Samyuktha Lakshmi M
 - Trisha D M
 
 ---
